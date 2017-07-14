@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="admin/css/station.css">
+	<link rel="stylesheet" href="admin/css/bootstrap.min.css">
+	<script type="text/javascript" src="admin/js/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="admin/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="admin/js/news.js"></script>
+	<script type="text/javascript" src="admin/js/template-web.js"></script>
+	<script type="text/html" id="imgInfo">
+			{{each data v}}
+			      <li class="list-group-item">
+				      <h3>{{v.title}}</h3>
+					    <div class="row">
+					    	<div class="col-md-2">
+					    		<img src="admin/template/upimg/{{v.imgpath}}" class="news-img">
+					    	</div>
+					    	<div class="col-md-10" style="margin-top: 30px">
+					    		<p>{{v.content}}</p>
+					    		<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					    		{{v.tm}}
+					    	</div>
+					    </div>
+				  </li>
+			{{/each}}
+	</script>
+	<script type="text/javascript">
+			$(function(){
+				$.ajax({
+	                url: "activity.php",
+	                type: "post",
+	                dataType:"json",
+	                success:function(data){                  
+	                    console.log(typeof data,":",data);
+	                    var htmlStr = template("imgInfo",{"data":data});
+	                    $("#content").html(htmlStr);
+	                    
+	                }
+	            });
+			});
+	</script>
+</head>
+<body>
+    <!-- 头部 -->
+	 <nav class="navbar navbar-default navbar-fixed-top">
+              <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                         <img src="images/logo.png" style="margin-left:-30%">
+                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                       
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                       <ul class="nav navbar-nav navbar-right myurl">
+                                <li><a href="index2.html">首页<span class="sr-only">(current)</span></a></li>
+                                <li><a href="news.html">街区新闻</a></li>
+                                <li><a href="station.html">入驻机构</a></li>
+                                <li class="active"><a href="activity.html">街区活动</a></li>
+                          </ul>
+                    </div><!-- /.navbar-collapse -->
+             </div><!-- /.container-fluid -->
+    </nav>
+    <div class="row">
+    	<div class="col-md-12 img">
+    		<img src="images/liebiao_01.jpg">
+    		<h2>集聚创业服务&nbsp;&nbsp;&nbsp;孵化科技企业&nbsp;&nbsp;&nbsp;孕育创业文化</h2>
+    	</div>
+    </div>
+    <br>
+    <br>
+    <!-- 左边面板 -->
+    <div class="row">
+    	<div class="col-md-2 col-md-offset-2">
+    	   <div class="list-group">
+        		<a href="#" class="list-group-item active">
+		            <h4 class="list-group-item-heading">街区活动</h4>
+		        </a>
+		        <a href="#" class="list-group-item">
+		            <h5 class="list-group-item-heading">街区活动</h5>
+		        </a>
+		   </div>
+    	</div>
+    	<div class="col-md-6">
+    		 <!-- 中间主体内容 -->
+		    <ul class="list-group">
+				  <li class="list-group-item">首页 > 街区活动</li>
+				  <div id="content">
+				  	
+				  
+				  
+				  </div>
+
+			</ul> 
+		</div>
+    </div>
+    
+</body>
+</html>

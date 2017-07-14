@@ -1,0 +1,21 @@
+.img>img{
+	width: 100%;
+}
+.img>h2{
+	margin-top:-3%;
+	margin-left:35%;
+	color:#fff;
+}
+.news-img{
+	/* width: 150px;
+	height: 150px; */
+	width: 100%;
+	border:5px solid #ccc;
+	border-radius:50%;
+}
+.list-group-item>h3{
+	color:#0099FF;
+}
+.col-md-9{
+	margin-top:20px;
+}
